@@ -9,8 +9,9 @@ export class MyRole extends OidcRoleBase {
   constructor(scope: Construct, id: string, props: BaseOidcRoleProps) {
     super(scope, id, props);
 
-    this.role.addToPolicy(
-      new iam.PolicyStatement({
+    this.addAPIGWPermissions();
+
+    this.addCustomPermissions({
         actions: [
           "ecs:CreateTaskSet",
           "ecs:DeleteTaskSet",
@@ -24,7 +25,6 @@ export class MyRole extends OidcRoleBase {
         ],
         resources: ["*"],
         effect: iam.Effect.ALLOW,
-      })
-    );
+    })
   }
 }

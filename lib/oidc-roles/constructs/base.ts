@@ -34,4 +34,26 @@ export class OidcRoleBase extends Construct {
         effect: iam.Effect.ALLOW
       }));
   }
+
+  addAPIGWPermissions() {
+    this.role.addToPolicy(
+      new iam.PolicyStatement({
+        actions: [
+          "apigateway:DELETE",
+          "apigateway:GET",
+          "apigateway:PATCH",
+          "apigateway:POST",
+          "apigateway:PUT",
+          "apigateway:Tag*",
+          "apigateway:UpdateRestApiPolicy",
+        ],
+        resources: ["*"],
+        effect: iam.Effect.ALLOW,
+      })
+    );
+  }
+
+  addCustomPermissions(statement: iam.PolicyStatementProps) {
+    this.role.addToPolicy(new iam.PolicyStatement(statement))
+  }
 }
