@@ -1,14 +1,9 @@
-# Welcome to your CDK TypeScript project
+# Role inheritance POC
 
-This is a blank project for CDK development with TypeScript.
+This is a cleaner and "better" (from a design standpoint) approach to creating roles.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+Basically we have one base role that with basic permissions and the base `assumedBy` policy, and then roles extend (or inherit) that one, and add extra permissions on top of that.
 
-## Useful commands
+This was deployed to test account and here's the end result of the permissions of the role:
 
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `npx cdk deploy`  deploy this stack to your default AWS account/region
-* `npx cdk diff`    compare deployed stack with current state
-* `npx cdk synth`   emits the synthesized CloudFormation template
+![img](./.img/image.png)
