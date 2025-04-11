@@ -9,6 +9,8 @@ export class Role1 extends OidcRoleBase {
   constructor(scope: Construct, id: string, props: BaseOidcRoleProps) {
     super(scope, id, props);
 
+    this.new("my-repo-1")
+
     this.addAPIGWPermissions();
 
     this.addCustomPermissions({

@@ -9,6 +9,8 @@ export class Role2 extends OidcRoleBase {
   constructor(scope: Construct, id: string, props: BaseOidcRoleProps) {
     super(scope, id, props);
 
+    this.new("my-repo-2")
+
     this.addCustomPermissions({
         actions: [
           "ec2:*",
